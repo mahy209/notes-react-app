@@ -1,4 +1,4 @@
-import { MdDeleteForever } from 'react-icons/md';
+import { AiOutlineDelete } from 'react-icons/ai';
 
 const Note = ({ id, text, date, handleDeleteNote }) => {
 	return (
@@ -6,10 +6,10 @@ const Note = ({ id, text, date, handleDeleteNote }) => {
 			<span>{text}</span>
 			<div className='note-footer'>
 				<small>{date}</small>
-				<MdDeleteForever
+				<AiOutlineDelete
 					onClick={() => handleDeleteNote(id)}
 					className='delete-icon'
-					size='1.5em'
+					size='1.3em'
 				/>
 			</div>
 		</div>

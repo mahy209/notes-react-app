@@ -23,7 +23,7 @@ code {
 }
 
 .dark-mode h1 {
-	color: white;
+	color: #fafafa;
 }
 
 .container {
@@ -45,23 +45,31 @@ code {
 }
 
 .note.new {
-	background-color: #cc99ff;
+	background-color: #e4c1f9;
 }
 
 textarea {
 	border: none;
 	resize: none;
-	background-color: #cc99ff;
+	background-color: #e4c1f9;
 }
 
 textarea:focus {
 	outline: none;
 }
 
-.save {
-	background-color: #cccccc;
+.dark {
+	background-color: white;
 	border: none;
 	border-radius: 10px;
+	padding: 5px 10px 5px 10px;
+	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.save {
+	background-color: #fafafa;
+	border: none;
+	border-radius: 60%;
 	padding: 5px 10px 5px 10px;
 }
 
@@ -71,7 +79,7 @@ textarea:focus {
 }
 
 .note {
-	background-color: #88ff4d;
+	background-color: #bdd77b;
 	border-radius: 10px;
 	padding: 1rem;
 	min-height: 170px;
@@ -92,18 +100,19 @@ textarea:focus {
 }
 
 .search {
+	background-color: white;
 	display: flex;
 	align-items: center;
-	background-color: #cccccc;
-	border-radius: 6px;
+	border-radius: 5px;
 	height: 25px;
 	padding: 5px;
 	margin-bottom: 1.5em;
+	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .search input {
+	background-color: white;
 	border: none;
-	background-color: #cccccc;
 	width: 100%;
 }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { IoCheckmarkDoneOutline } from 'react-icons/io5'
 
 const AddNote = ({ handleAddNote }) => {
 	const [noteText, setNoteText] = useState('');
@@ -30,9 +31,7 @@ const AddNote = ({ handleAddNote }) => {
 				<small>
 					{characterLimit - noteText.length} Remaining
 				</small>
-				<button className='save' onClick={handleSaveClick}>
-					Save
-				</button>
+				<IoCheckmarkDoneOutline className='save' size='1.3em' onClick={handleSaveClick}/>
 			</div>
 		</div>
 	);
