@@ -4,16 +4,18 @@ const Header = ({ handleToggleDarkMode }) => {
 	return (
 		<div className='header'>
 			<h1>Diary</h1>
-			<button
-				onClick={() =>
-					handleToggleDarkMode(
-						(previousDarkMode) => !previousDarkMode
+            <button
+              role="img"
+              aria-label="moon"
+			  className='dark'
+              onClick={() =>
+				handleToggleDarkMode(
+					(previousDarkMode) => !previousDarkMode
 					)
-				}
-				className='dark'
-			>
-				Dark Mode
-			</button>
+			}
+            >
+              🌞🌙
+            </button>
 		</div>
 	);
 };
