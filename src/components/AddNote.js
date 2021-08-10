@@ -18,8 +18,22 @@ const AddNote = ({ handleAddNote }) => {
 		}
 	};
 
+	
+	const [notetitle, setUpdateTitle] = useState('');
+	const handleupdateTitle = (event) => {
+		const title = event.target.value;
+		setUpdateTitle(title, notetitle.title, "title");
+	};
+
 	return (
 		<div className='note new'>
+			<input
+                className="note-title"
+                type="text"
+                placeholder="Title"
+                value={notetitle}
+                onChange={handleupdateTitle}
+            />
 			<textarea
 				rows='8'
 				cols='10'

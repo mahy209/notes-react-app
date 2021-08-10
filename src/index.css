@@ -48,10 +48,29 @@ code {
 	background-color: #e4c1f9;
 }
 
+.note-title {
+	border: none;
+	color: #242526;
+	background-color: #e4c1f9;
+	font-size: 20px;
+	height: 35px;
+	resize: none;
+	border-radius: 3px;
+	display: flex;
+}
+
+.note-title:focus {
+	outline: none;
+	border: none;
+}
+
 textarea {
 	border: none;
 	resize: none;
 	background-color: #e4c1f9;
+	box-sizing: border-box;
+	font-size: 16px;
+	padding: 5px 10px 5px 10px;
 }
 
 textarea:focus {
@@ -59,6 +78,7 @@ textarea:focus {
 }
 
 .dark {
+	cursor: grab;
 	background-color: white;
 	border: none;
 	border-radius: 10px;
@@ -79,14 +99,24 @@ textarea:focus {
 }
 
 .note {
-	background-color: #bdd77b;
+	background-color: #cee19d;
 	border-radius: 10px;
+	font-size: 16px;
 	padding: 1rem;
-	min-height: 170px;
+	min-height: 150px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	white-space: pre-wrap;
+	resize: none;
+	word-break: keep-all;
+	word-wrap: break-word;
+}
+
+.note-nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .note-footer {
@@ -100,22 +130,39 @@ textarea:focus {
 }
 
 .search {
-	background-color: white;
 	display: flex;
 	align-items: center;
-	border-radius: 5px;
-	height: 25px;
-	padding: 5px;
 	margin-bottom: 1.5em;
-	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    padding: 12px 20px 12px 40px;
+}
+
+.search-button{
+	background-color: white;
+	border:none;
+	height: 40px;
+	width: 40px;
+	border-radius: 7px 0px 0px 7px;
+    box-sizing: border-box;
+	box-shadow: 0 5px 0 0 rgba(0, 0, 0, 0.2), 0 4px 0 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .search input {
 	background-color: white;
 	border: none;
-	width: 100%;
+    padding: 12px 20px 12px 40px;
+	font-size: 16px;
+	height: 40px;
+	width: 130px;
+	border-radius: 0px 7px 7px 0px;
+    box-sizing: border-box;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 0 0 rgba(0, 0, 0, 0.19);
 }
 
 .search input:focus {
 	outline: none;
+	width: 45%;
 }

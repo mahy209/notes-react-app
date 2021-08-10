@@ -1,16 +1,21 @@
 import { AiOutlineDelete } from 'react-icons/ai';
+  
 
-const Note = ({ id, text, date, handleDeleteNote }) => {
+const Note = ({ id, title, text, date, handleDeleteNote }) => {
 	return (
 		<div className='note'>
-			<span>{text}</span>
-			<div className='note-footer'>
-				<small>{date}</small>
-				<AiOutlineDelete
+			<div className='note-nav'>
+			<span>{title}</span>
+			<AiOutlineDelete
 					onClick={() => handleDeleteNote(id)}
 					className='delete-icon'
 					size='1.3em'
 				/>
+			</div>
+			<span>{text}</span>
+			<div className='note-footer'>
+				<small>{date}</small>
+				
 			</div>
 		</div>
 	);
