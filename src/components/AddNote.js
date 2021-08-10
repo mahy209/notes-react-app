@@ -11,18 +11,18 @@ const AddNote = ({ handleAddNote }) => {
 		}
 	};
 
+	
+	const [noteTitle, setUpdateTitle] = useState('');
+	const handleUpdateTitle = (event) => {
+		const title = event.target.value;
+		setUpdateTitle(title, noteTitle.title, "title");
+	};
+
 	const handleSaveClick = () => {
 		if (noteText.trim().length > 0) {
 			handleAddNote(noteText);
 			setNoteText('');
 		}
-	};
-
-	
-	const [notetitle, setUpdateTitle] = useState('');
-	const handleupdateTitle = (event) => {
-		const title = event.target.value;
-		setUpdateTitle(title, notetitle.title, "title");
 	};
 
 	return (
@@ -31,8 +31,8 @@ const AddNote = ({ handleAddNote }) => {
                 className="note-title"
                 type="text"
                 placeholder="Title"
-                value={notetitle}
-                onChange={handleupdateTitle}
+                value={noteTitle}
+                onChange={handleUpdateTitle}
             />
 			<textarea
 				rows='8'
