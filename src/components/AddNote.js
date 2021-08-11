@@ -2,26 +2,26 @@ import { useState } from 'react';
 import { IoCheckmarkDoneOutline } from 'react-icons/io5'
 
 const AddNote = ({ handleAddNote }) => {
+	const [noteTitle, setNoteTitle] = useState('');
 	const [noteText, setNoteText] = useState('');
+
 	const characterLimit = 200;
 
-	const handleChange = (event) => {
+	const handleTextChange = (event) => {
 		if (characterLimit - event.target.value.length >= 0) {
 			setNoteText(event.target.value);
 		}
 	};
 
-	
-	const [noteTitle, setUpdateTitle] = useState('');
-	const handleUpdateTitle = (event) => {
-		const title = event.target.value;
-		setUpdateTitle(title, noteTitle.title, "title");
+	const handleTitleChange = (event) => {
+		setNoteTitle(event.target.value);
 	};
 
-	const handleSaveClick = () => {
-		if (noteText.trim().length > 0) {
-			handleAddNote(noteText);
+	const handleSaveClick = (event) => {
+		if (noteText.trim().length > 0 && noteTitle.trim().length > 0) {
+			handleAddNote(noteText,noteTitle);
 			setNoteText('');
+			setNoteTitle('')
 		}
 	};
 
@@ -32,14 +32,14 @@ const AddNote = ({ handleAddNote }) => {
                 type="text"
                 placeholder="Title"
                 value={noteTitle}
-                onChange={handleUpdateTitle}
+                onChange={handleTitleChange}
             />
 			<textarea
 				rows='8'
 				cols='10'
 				placeholder='Type to add a note...'
 				value={noteText}
-				onChange={handleChange}
+				onChange={handleTextChange}
 			></textarea>
 			<div className='note-footer'>
 				<small>
