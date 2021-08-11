@@ -129,40 +129,59 @@ textarea:focus {
 	cursor: pointer;
 }
 
-.search {
-	display: flex;
-	align-items: center;
-	margin-bottom: 1.5em;
-    border-radius: 5px;
-    padding: 12px 20px 12px 40px;
+.search-label{
+  display: inline-block;
+  position: relative;
+  height: 35px;
+  width: 35px;
+  box-sizing: border-box;
+  margin: 0px 8px 7px 0px;
+  padding: 7px 9px 0px 9px;
+  border: 3px solid rgb(179, 179, 179);
+  border-radius: 30px;
+  transition: all 100ms ease;
+  outline: 0;
+  -webkit-transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out,
+    padding 0.2s;
+  -webkit-transition-delay: 2s;
+  transition-delay: 0.4s;
+  box-shadow: 0 4px 5px 0 rgb(179, 179, 179), 0 4px 10px 0 rgb(179, 179, 179);
 }
 
-.search-button{
-	background-color: white;
-	border:none;
-	height: 40px;
-	width: 40px;
-	border-radius: 7px 0px 0px 7px;
+.search-label:after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    right: -5px;
+    top: 21px;
+    background: rgb(179, 179, 179);
+    border-radius: 3px;
+    transform: rotate(-45deg);
+    transition: all 100ms ease;
+	box-shadow: 0 4px 5px 0 rgb(179, 179, 179), 0 4px 10px 0 rgb(179, 179, 179);
+  }
+
+  .search-label:active , .search-label:hover
+	{
+		width: 200px;
+    margin-right: 0px;
+	  }
+
+	  .search-label:hover:after
+		{
+			height: 0px;
+		  }
+
+.search-bar {
+    width: 100%;
+    border: none;
     box-sizing: border-box;
-	box-shadow: 0 5px 0 0 rgba(0, 0, 0, 0.2), 0 4px 0 0 rgba(0, 0, 0, 0.19);
-
-}
-
-.search input {
-	background-color: white;
-	border: none;
-    padding: 12px 20px 12px 40px;
-	font-size: 16px;
-	height: 40px;
-	width: 130px;
-	border-radius: 0px 7px 7px 0px;
-    box-sizing: border-box;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 4px 0 0 rgba(0, 0, 0, 0.19);
-}
-
-.search input:focus {
-	outline: none;
-	width: 45%;
-}
+    font-family: Helvetica;
+    font-size: 16px;
+    color: inherit;
+    background: transparent;
+    outline-width: 0px;
+	text-align: justify;
+	padding-left: 20px;
+  }

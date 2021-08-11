@@ -1,19 +1,20 @@
 import React from 'react';
-import { FiSearch } from 'react-icons/fi';
 
 const Search = ({ handleSearchNote }) => {
 	return (
 		<div className='search'>
-			<button className= 'search-button'>
-			<FiSearch className='search-icons' size='1.3em' />
-			</button>
-			<input
+			<div class="cntr-innr">
+    <label class="search-label" for="inpt_search">
+	<input
+			    className='search-bar'
 				onChange={(event) =>
 					handleSearchNote(event.target.value)
 				}
 				type='text'
-				placeholder='Search'
 			/>
+    </label>
+  </div>
+			
 		</div>
 	);
 };
