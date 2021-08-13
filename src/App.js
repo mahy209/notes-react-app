@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import NotesList from "./components/NotesList";
 import Search from "./components/Search";
@@ -9,6 +9,8 @@ const App = () => {
   const [notes, setNotes] = useLocalStorageState("Notes");
 
   const [searchText, setSearchText] = useState("");
+
+  const [searchNotes, setSearchNotes] = useState([]);
 
   const [darkMode, setDarkMode] = useState(false);
 
@@ -29,15 +31,24 @@ const App = () => {
     setNotes(newNotes);
   };
 
+  useEffect(() => {
+    const newNotes = notes.filter(
+      (note) =>
+        note.text.toLowerCase().includes(searchText.toLowerCase().trim()) ||
+        note.title.toLowerCase().includes(searchText.toLowerCase().trim())
+    );
+    setSearchNotes(newNotes);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchText]);
+
   return (
     <div className={`${darkMode && "dark-mode"}`}>
       <div className="container">
         <Header handleToggleDarkMode={setDarkMode} />
         <Search handleSearchNote={setSearchText} />
         <NotesList
-          notes={notes.filter((note) =>
-            note.text.toLowerCase().includes(searchText)
-          )}
+          notes={notes}
+          searchNotes={searchNotes}
           handleAddNote={addNote}
           handleDeleteNote={deleteNote}
         />
