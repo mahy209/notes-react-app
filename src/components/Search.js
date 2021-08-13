@@ -3,8 +3,8 @@ import React from 'react';
 const Search = ({ handleSearchNote }) => {
 	return (
 		<div className='search'>
-			<div class="cntr-innr">
-    <label class="search-label" for="inpt_search">
+			<div className="cntr-innr">
+    <label className="search-label" for="inpt_search">
 	<input
 			    className='search-bar'
 				onChange={(event) =>
