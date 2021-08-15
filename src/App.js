@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import { useLocalStorageState } from "./hooks/useLocalStorage";
 
 const App = () => {
-  const [notes, setNotes] = useLocalStorageState("Notes");
+  const [notes, setNotes] = useLocalStorageState("Notes", []);
 
   const [searchText, setSearchText] = useState("");
 
@@ -24,11 +24,13 @@ const App = () => {
     };
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
+    setSearchNotes(newNotes);
   };
 
   const deleteNote = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
+    setSearchNotes(newNotes);
   };
 
   useEffect(() => {
