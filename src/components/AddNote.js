@@ -6,6 +6,10 @@ import { EllipsisOutlined, UploadOutlined, TagOutlined, CheckCircleOutlined } fr
 const AddNote = ({ handleAddNote }) => {
 	const [noteTitle, setNoteTitle] = useState('');
 	const [noteText, setNoteText] = useState('');
+	const [input, setInput] = useState('');
+	const [tags, setTags] = useState([]);
+	const [isKeyReleased, setIsKeyReleased] = useState(false);
+	const [visible, setVisible] = useState(false);
 
 	const characterLimit = 200;
 
@@ -23,21 +27,56 @@ const AddNote = ({ handleAddNote }) => {
 		if (noteText.trim().length > 0 && noteTitle.trim().length > 0) {
 			handleAddNote(noteText,noteTitle);
 			setNoteText('');
-			setNoteTitle('')
+			setNoteTitle('');
 		}
 	};
+
+	const onChange = (e) => {
+		const { value } = e.target;
+		setInput(value);
+	};
+
+	const onKeyDown = (e) => {
+		const { key } = e;
+		const trimmedInput = input.trim();
+	  
+		if (key === ',' && trimmedInput.length && !tags.includes(trimmedInput)) {
+		  e.preventDefault();
+		  setTags(prevState => [...prevState, trimmedInput]);
+		  setInput('');
+		}
+	  
+		if (key === "Backspace" && !input.length && tags.length && isKeyReleased) {
+		  const tagsCopy = [...tags];
+		  const poppedTag = tagsCopy.pop();
+		  e.preventDefault();
+		  setTags(tagsCopy);
+		  setInput(poppedTag);
+		}
+	  
+		setIsKeyReleased(false);
+	  };
+	  
+	  const onKeyUp = () => {
+		setIsKeyReleased(true);
+	  }
+
+	  const deleteTag = (index) => {
+		setTags(prevState => prevState.filter((tag, i) => i !== index))
+	  }
 	
 
 	  const menu = (
 		<Menu className="dropdown-menu">
-		  <Menu.Item>
+		  <Menu.Item key={1}>
 			  <Upload
       action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
       listType="picture"
       className="upload-list-inline"
 	  maxCount={1}> <UploadOutlined />
     </Upload> </Menu.Item>
-		  <Menu.Item> <TagOutlined /> </Menu.Item>
+	<Menu.Divider />
+		  <Menu.Item key={2}> <TagOutlined onClick={() => setVisible(!visible)}/> </Menu.Item>
 		</Menu>
 	  );
 
@@ -57,6 +96,23 @@ const AddNote = ({ handleAddNote }) => {
                 </a>
             </Dropdown>
 			</div>
+			<div className='tag-bar'>
+			{visible && <div className="tag-button">{tags.map((tag, index) => (
+  <div className="tag">
+    {tag}
+    <button onClick={() => deleteTag(index)}>x</button>
+  </div>
+))}
+			<input
+  value={input}
+  placeholder="Enter a tag"
+  size="small"
+  onKeyDown={onKeyDown}
+  onKeyUp={onKeyUp}
+  onChange={onChange}
+/>
+  </div>}
+  </div>
 			<textarea
 				rows='8'
 				cols='10'
