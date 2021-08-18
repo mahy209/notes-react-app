@@ -14,12 +14,13 @@ const App = () => {
 
   const [darkMode, setDarkMode] = useState(false);
 
-  const addNote = (text, title) => {
+  const addNote = (text, title, tags = []) => {
     const date = new Date();
     const newNote = {
       id: nanoid(),
       title: title,
       text: text,
+      tags: tags,
       date: date.toLocaleDateString(),
     };
     const newNotes = [...notes, newNote];

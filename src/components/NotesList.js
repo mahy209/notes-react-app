@@ -8,23 +8,25 @@ const NotesList = ({ notes, handleAddNote, handleDeleteNote, searchNotes }) => {
       <AddNote handleAddNote={handleAddNote} />
 
       {searchNotes.length > 0
-        ? searchNotes.map((note) => (
+        ? searchNotes.map(({ id, title, text, date, tags }) => (
             <Note
-              key={note.id}
-              id={note.id}
-              title={note.title}
-              text={note.text}
-              date={note.date}
+              key={id}
+              id={id}
+              title={title}
+              text={text}
+              date={date}
+              tags={tags}
               handleDeleteNote={handleDeleteNote}
             />
           ))
-        : notes.map((note) => (
+        : notes.map(({ id, title, text, date, tags }) => (
             <Note
-              key={note.id}
-              id={note.id}
-              title={note.title}
-              text={note.text}
-              date={note.date}
+              key={id}
+              id={id}
+              title={title}
+              text={text}
+              date={date}
+              tags={tags}
               handleDeleteNote={handleDeleteNote}
             />
           ))}
