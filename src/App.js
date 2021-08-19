@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
+import Fuse from "fuse.js";
 import NotesList from "./components/NotesList";
 import Search from "./components/Search";
 import Header from "./components/Header";
@@ -35,14 +36,15 @@ const App = () => {
   };
 
   useEffect(() => {
-    const newNotes = notes.filter(
-      (note) =>
-        note.text.toLowerCase().includes(searchText.toLowerCase().trim()) ||
-        note.title.toLowerCase().includes(searchText.toLowerCase().trim())
-    );
-    setSearchNotes(newNotes);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchText]);
+    const options = {
+      keys: ["title", "text", "tags"],
+    };
+    const fuse = new Fuse(notes, options);
+    const newNotes = fuse.search(searchText);
+    const searchResults = newNotes.map((result) => result.item);
+
+    setSearchNotes(searchResults);
+  }, [notes, searchText]);
 
   return (
     <div className={`${darkMode && "dark-mode"}`}>
