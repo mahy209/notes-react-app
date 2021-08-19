@@ -13,7 +13,7 @@ const App = () => {
 
   const [searchNotes, setSearchNotes] = useState([]);
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useLocalStorageState("DarkMode", false);
 
   const addNote = (text, title, tags = []) => {
     const date = new Date();
