@@ -1,11 +1,11 @@
-import { AiOutlineDelete } from "react-icons/ai";
+import { DeleteOutlined } from "@ant-design/icons";
 
 const Note = ({ id, title, text, date, handleDeleteNote, tags }) => {
   return (
     <div className="note">
       <div className="note-nav">
         <span>{title}</span>
-        <AiOutlineDelete
+        <DeleteOutlined
           onClick={() => handleDeleteNote(id)}
           className="delete-icon"
           size="1.3em"
