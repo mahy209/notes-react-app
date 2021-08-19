@@ -5,6 +5,7 @@ import NotesList from "./components/NotesList";
 import Search from "./components/Search";
 import Header from "./components/Header";
 import { useLocalStorageState } from "./hooks/useLocalStorage";
+import "./App.css";
 
 const App = () => {
   const [notes, setNotes] = useLocalStorageState("Notes", []);

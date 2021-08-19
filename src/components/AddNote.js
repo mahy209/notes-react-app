@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "antd/dist/antd.css";
 import { Menu, Dropdown, Upload } from "antd";
 import {
   EllipsisOutlined,
