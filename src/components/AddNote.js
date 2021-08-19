@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, Dropdown, Upload } from "antd";
+import { Menu, Dropdown, Upload, Button } from "antd";
 import {
   EllipsisOutlined,
   UploadOutlined,
@@ -77,16 +77,16 @@ const AddNote = ({ handleAddNote }) => {
           action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
           listType="picture"
           className="upload-list-inline"
-          maxCount={1}
+          maxCount={3}
         >
           {" "}
-          <UploadOutlined />
+          <Button icon={<UploadOutlined />} />
         </Upload>{" "}
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item key={2}>
         {" "}
-        <TagOutlined onClick={() => setVisible(!visible)} />{" "}
+        <Button icon={<TagOutlined onClick={() => setVisible(!visible)} />} />
       </Menu.Item>
     </Menu>
   );
@@ -101,7 +101,7 @@ const AddNote = ({ handleAddNote }) => {
           value={noteTitle}
           onChange={handleTitleChange}
         />
-        <Dropdown overlay={menu} placement="bottomCenter" trigger={["click"]}>
+        <Dropdown overlay={menu} placement="bottomCenter" trigger={["hover"]}>
           <a
             className="ant-dropdown-link"
             href="/#"
