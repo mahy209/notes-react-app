@@ -1,13 +1,22 @@
-import React from "react";
+import { useCallback, useMemo } from "react";
+import debounce from "lodash.debounce";
 
-const Search = ({ handleSearchNote }) => {
+const Search = ({ setSearchText }) => {
+  const onChange = useCallback(
+    (event) => {
+      setSearchText(event.target.value);
+    },
+    [setSearchText]
+  );
+  const debouncedSearch = useMemo(() => debounce(onChange, 500), [onChange]);
+
   return (
     <div className="search">
       <div className="cntr-innr">
         <label className="search-label" htmlFor="inpt_search">
           <input
             className="search-bar"
-            onChange={(event) => handleSearchNote(event.target.value)}
+            onChange={debouncedSearch}
             type="text"
           />
         </label>
