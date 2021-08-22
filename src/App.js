@@ -3,7 +3,6 @@ import { nanoid } from "nanoid";
 import Fuse from "fuse.js";
 
 import NotesList from "./components/NotesList";
-import Search from "./components/Search";
 import Header from "./components/Header";
 import { useLocalStorageState } from "./hooks/useLocalStorage";
 import "./App.css";
@@ -51,8 +50,10 @@ const App = () => {
   return (
     <div className={`${darkMode && "dark-mode"}`}>
       <div className="container">
-        <Header handleToggleDarkMode={setDarkMode} />
-        <Search setSearchText={setSearchText} />
+        <Header
+          handleToggleDarkMode={setDarkMode}
+          setSearchText={setSearchText}
+        />
         <NotesList
           notes={notes}
           searchNotes={searchNotes}

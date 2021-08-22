@@ -13,7 +13,6 @@ const Note = ({ id, title, text, date, handleDeleteNote, tags }) => {
       </div>
       <span>{text}</span>
       <span>{tags}</span>
-
       <div className="note-footer">
         <small>{date}</small>
       </div>
