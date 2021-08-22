@@ -61,6 +61,7 @@ code {
   resize: none;
   border-radius: 3px;
   display: flex;
+  width: 100%;
 }
 
 .note-title:focus {
